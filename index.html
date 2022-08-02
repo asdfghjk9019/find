@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+
+    <style>
+        .number {
+            background-color: bisque;
+            background-color: bisque;
+            height: 40px;
+            width: 40px;
+            text-align: center;
+            border-radius: 5px;
+            border: 2px solid black;
+            display: inline-block;
+            margin: 2px;
+            transition: background-color 0.4s ease;
+        }
+
+        .number h1 {
+            width: 40px;
+            height: 40px;
+            margin: 0px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let numbers = [5,5,5,6,10,20,31]
+        let cards = []
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        for (let i = 0; i < numbers.length; i++) {
+            let card = document.createElement('div')
+            card.className = 'number'
+            card.innerHTML = `<h1>${numbers[i]}</h1>`
+            cards.push(card)
+
+            document.body.appendChild(card)
+        }
+
+        async function find() {
+            let biggest = 0
+
+            cards[biggest].style.backgroundColor = '#339966'
+
+            for (let i = 1; i < numbers.length; i++) {
+                if (numbers[i] > numbers[biggest]) {
+                    await sleep(1000)
+                    cards[biggest].style.backgroundColor = 'bisque'
+                    cards[i].style.backgroundColor = '#339966'
+
+                    biggest = i
+                }
+            }
+        }
+
+        find()
+    </script>
+</body>
+</html>
