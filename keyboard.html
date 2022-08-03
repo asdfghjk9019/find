@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .letter {
+            background-color: bisque;
+            background-color: bisque;
+            height: 40px;
+            width: 40px;
+            text-align: center;
+            border-radius: 5px;
+            border: 2px solid black;
+            display: inline-block;
+            margin: 2px;
+            transition: background-color 0.4s ease;
+            font-family: sans-serif;
+        }
+
+        .letter h1 {
+            width: 40px;
+            height: 40px;
+            margin: 0px;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
+        let cards = {}
+
+        for (let i = 0; i < letters.length; i++) {
+            let card = document.createElement('div')
+            card.className = 'letter'
+            card.innerHTML = `<h1>${letters[i]}</h1>`
+
+            cards[letters[i]] = card 
+
+            document.body.appendChild(card)
+        }
+
+        let space = document.createElement('div')
+        space.className = 'letter'
+        space.innerHTML = `<h1 style="width: 120px">SPACE</h1>`
+        space.style.width = '120px'
+        cards[' '] = space
+        document.body.appendChild(space)
+
+        document.onkeydown = function(event) {
+            let key = event.key.toUpperCase()
+            let card = cards[key]
+
+            if (card == undefined) { return }
+
+            card.style.backgroundColor = '#339966'
+        }
+
+        document.onkeyup = function(event) {
+            let key = event.key.toUpperCase()
+            let card = cards[key]
+
+            if (card == undefined) { return }
+
+            card.style.backgroundColor = 'bisque'
+        }
+    </script>
+</body>
+</html>
