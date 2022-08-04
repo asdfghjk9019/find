@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #ball {
+            border-radius: 100%;
+            background-color: black;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            transition: transform 1s ease;
+            background: rgb(110,182,228);
+            background: linear-gradient(90deg, rgba(110,182,228,1) 0%, rgba(9,179,128,1) 0%, rgba(5,163,195,1) 100%); 
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div id="ball"></div>
+    <h1 id="positionY">position Y: 1</h1>
+    <h1 id="positionX">position X: 1</h1>
+    <script>
+        let ball = document.getElementById('ball')
+        let positionY = document.getElementById('positionY')
+        let positionX = document.getElementById('positionX')
+        document.onmousedown = function(event) {
+            let x = (event.x - 20).toString()
+            let y = (event.y - 20).toString()
+            positionY.innerText = `position Y: ${y}`
+            positionX.innerText = `position X: ${x}`
+            ball.style.transform = `translate(${x}px, ${y}px)`
+        }
+    </script>
+</body>
+</html>
